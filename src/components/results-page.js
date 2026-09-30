@@ -28,6 +28,12 @@ class ResultPage {
     this._searchInstance = instantsearch({
       indexName: process.env.ALGOLIA_INDEX,
       searchClient: this._searchClient,
+      // Enables Algolia Insights: loads search-insights, adds queryID (clickAnalytics) and userToken
+      // to every search, and sends automatic view and filter events. The cookie keeps the anonymous
+      // userToken stable across sessions, which Personalization needs to build a profile.
+      insights: {
+        insightsInitParams: { useCookie: true },
+      },
     });
   }
 

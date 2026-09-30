@@ -59,7 +59,7 @@ def upload(products: list[dict]) -> None:
     load_dotenv()
     app_id = os.environ["ALGOLIA_APP_ID"]
     api_key = os.environ["ALGOLIA_ADMIN_API_KEY"]  # write access needed; never ship this to the front end
-    index_name = os.environ["ALGOLIA_INDEX_NAME"]
+    index_name = os.environ["ALGOLIA_INDEX"]
 
     client = SearchClientSync(app_id, api_key)
     client.save_objects(index_name, products, wait_for_tasks=True)
