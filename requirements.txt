@@ -1,2 +1,3 @@
+# Requires Python 3.9+ (Python 3.8 has no prebuilt wheels for algoliasearch's pydantic dependency)
 algoliasearch>=4,<5
 python-dotenv>=1.0
