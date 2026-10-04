@@ -13,15 +13,12 @@ Usage:
 import argparse
 import json
 import math
-import os
 from decimal import Decimal
 from pathlib import Path
 
-from dotenv import load_dotenv
+from algolia_client import get_client_and_index
 
-ROOT = Path(__file__).resolve().parent.parent
-DATA_FILE = ROOT / "data" / "products.json"
-ENV_FILE = ROOT / ".env"
+DATA_FILE = Path(__file__).resolve().parent.parent / "data" / "products.json"
 
 SALE_CATEGORY = "Cameras & Camcorders"
 DISCOUNT = Decimal("0.20")
@@ -56,19 +53,7 @@ def transform(products: list[dict]) -> list[dict]:
 
 
 def upload(products: list[dict]) -> None:
-    from algoliasearch.search.client import SearchClientSync
-
-    load_dotenv(ENV_FILE)
-    required = ["ALGOLIA_APP_ID", "ALGOLIA_ADMIN_API_KEY", "ALGOLIA_INDEX"]
-    missing = [name for name in required if not os.environ.get(name)]
-    if missing:
-        raise SystemExit(f"Missing {', '.join(missing)}. Add them to {ENV_FILE} (see .env.example).")
-
-    app_id = os.environ["ALGOLIA_APP_ID"]
-    api_key = os.environ["ALGOLIA_ADMIN_API_KEY"]  # write access needed; never ship this to the front end
-    index_name = os.environ["ALGOLIA_INDEX"]
-
-    client = SearchClientSync(app_id, api_key)
+    client, index_name = get_client_and_index()
     client.save_objects(index_name, products, wait_for_tasks=True)
     print(f"Uploaded {len(products)} records to '{index_name}'.")
 
