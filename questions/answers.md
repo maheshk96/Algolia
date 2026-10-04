@@ -51,4 +51,23 @@ Mahesh
 
 ## Question 3
 
-_To do: needs the error screenshot (`error.png`) from the questions directory._
+**To:** marc@hotmail.com
+**Subject:** Re: Error on website
+
+Hi Marc,
+
+Thanks for sending the screenshot. That makes this much quicker to track down.
+
+**What the error means:** your site's JavaScript uses something called `searchkit` on the first line of `index.js`, but it was never loaded or defined. The browser stops at that point, so the rest of the page doesn't run.
+
+**What's most likely causing it:**
+
+- **The library isn't installed or imported.** Check that `searchkit` is listed in your `package.json` and imported at the top of `index.js`, then rebuild your site.
+- **A spelling or capitalisation mismatch.** JavaScript is case-sensitive, so `Searchkit` and `searchkit` are different names. Check that the name you use matches the one you imported.
+
+**One thing to check:** Searchkit is a separate open-source library for searching with Elasticsearch, and it isn't part of Algolia. If you meant to use Algolia, you'd use our `algoliasearch` and InstantSearch libraries instead. I'm happy to point you to a short getting-started guide.
+
+If that doesn't sort it out, could you send me the first few lines of your `index.js`, your `package.json`, and your website's address? I'll take a look straight away.
+
+Best,
+Mahesh
