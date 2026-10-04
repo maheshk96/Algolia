@@ -1,6 +1,6 @@
 # Spencer & Williams: Algolia Demo
 
-**Live demo:** **https://www.bright-dango-5a02bd.netlify.app**
+**Live demo:** **bright-dango-5a02bd.netlify.app**
 
 What I built for each part of the assignment, the decisions behind it, and how to run it. The original brief is in [BRIEF.md](BRIEF.md).
 
