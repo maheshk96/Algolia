@@ -2,6 +2,10 @@
 
 **Live demo:** **bright-dango-5a02bd.netlify.app**
 
+Algolia app: App ID R2WTT1AHPJ, index products
+
+What I built for each part of the assignment, the decisions behind it, and how to run it. The original brief is in BRIEF.md. How I used AI tools is set out in AI assistance.
+
 What I built for each part of the assignment, the decisions behind it, and how to run it. The original brief is in [BRIEF.md](BRIEF.md).
 
 ## Running it
@@ -25,7 +29,7 @@ The Admin key is only read by the Python scripts. Only the App ID, Search-Only k
 [`scripts/upload_products.py`](scripts/upload_products.py) takes 20% off every product in the camera category, rounds down to a whole number, and uploads all 10,000 records in one run.
 
 - **Which products count as "cameras".** The brief's "camera category" could mean several things in this data, so I asked before building. We chose the top-level category `Cameras & Camcorders` (753 products). It includes accessories such as memory cards and binoculars. Security cameras sit under "Connected Home" in this data, so they aren't included.
-- **Rounding.** Prices are calculated with exact decimal arithmetic, so a value like 79.99999 can't wrongly round down to 79.
+- **Rounding.** Prices are calculated with exact decimal arithmetic.
 - **`price_range`.** This field is used for filtering by price. 98 products would have stayed in the wrong band after the discount, so the script recalculates it to keep price filters accurate.
 
 ## Part 2: Insights events
@@ -55,3 +59,11 @@ Settings live in [`scripts/configure_index.py`](scripts/configure_index.py), so 
 ## Customer questions
 
 Answers are in [questions/answers.md](questions/answers.md).
+
+AI assistance
+
+In line with Algolia's AI guidelines for candidates, this is how I used AI. I worked with AI during the assignment.
+
+Code: AI was used to scope the product data and some of the code rework was picked up by Copilot. I ran everything against my own Algolia app, checked the results in the dashboard and deployed the site.
+This README: drafted with AI, then reviewed and edited by me.
+Setup and deployment: Claude helped me debug local Python, Node and git issues.
