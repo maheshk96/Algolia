@@ -55,9 +55,3 @@ Settings live in [`scripts/configure_index.py`](scripts/configure_index.py), so 
 ## Customer questions
 
 Answers are in [questions/answers.md](questions/answers.md).
-
-## Next steps I'd suggest
-
-- Configure a Personalization strategy (events + `brand`/`categories`/`type`), then add `enablePersonalization: true` to searches once enough events have been collected.
-- Turn on Dynamic Re-Ranking once there is enough click data.
-- Send add-to-cart and purchase events from the product detail and checkout pages too.
